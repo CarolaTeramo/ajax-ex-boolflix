@@ -45,7 +45,6 @@ $(document).ready(function(){
         // appendo questo var all id che è nell'html
         $('.contenitore_schede_film').append(html_finale);
 
-
       //fine ciclo
       }
 
@@ -55,7 +54,17 @@ $(document).ready(function(){
   }
 
   $('.bt_dx').click(function(){
+    invio_input();
+  });
 
+  // intercetto il tasto INVIO
+  $('.input_sx').keypress(function(event) {
+    if(event.which == 13) {
+      invio_input();
+    }
+  });
+
+  function invio_input() {
     //svuoto il contenitore per successive ricerche
     $('.contenitore_schede_film').empty();
     // recupero attributo input in una var
@@ -64,9 +73,7 @@ $(document).ready(function(){
 
     //azzero valore input
     $('.input_sx').val('');
-
-  });
-
+  }
 
 
 
