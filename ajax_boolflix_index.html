@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- handlebars -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js" type="text/javascript"></script>
+    <!-- moment -->
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <!-- foglio di stile css -->
+    <link rel="stylesheet" href="ajax_boolflix_style.css">
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="ricerca">
+        <input class="input_sx" type="text" name="" value="" placeholder="Cerca il film">
+        <button class="bt_dx"type="button" name="button">Cerca</button>
+      </div>
+      <span></span>
+
+      <div class="film_visualizzati">
+        <div class="contenitore_schede_film">
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- script handlebars -->
+    <script id="entry-template" type="text/x-handlebars-template">
+
+      <div id="scheda_film">
+
+        <div class="titolo_film">
+          <h3>Titolo : <span> {{ titolo }}</span></h3>
+        </div>
+
+        <div class="titolo_orig_film">
+          <h3>Titolo originale : <span>{{ titolo_originale }}</span></h3>
+        </div>
+
+        <div class="lingua_film">
+          <h3>Lingua : <span>{{ lingua }}</span></h3>
+        </div>
+
+        <div class="voto_film">
+          <h3>Voto : <span>{{ voto }}</span></h3>
+        </div>
+
+      </div>
+    </script>
+
+
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!-- foglio java -->
+    <script src="ajax_boolflix_main.js"></script>
+  </body>
+</html>
