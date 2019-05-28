@@ -31,6 +31,21 @@ $(document).ready(function(){
       }
     });
 
+    $.ajax({
+      'url': 'https://api.themoviedb.org/3/search/tv',
+      //'url': 'https://api.themoviedb.org/3/search/movie?api_key=168d2053ad0197f7745e3f3f0a787812&query=batman',
+      'method': 'GET',
+      'data' : dato_ajax,
+      'success': function(dato_chiamata_due){
+        output (dato_chiamata_due);
+        console.log(dato_chiamata_due);
+
+      },
+      'error': function(){
+        alert('no')
+      }
+    });
+
     function output(info){
       // info= generica variabile a cui sopra do valore dato
       //console.log(info);
@@ -54,6 +69,8 @@ $(document).ready(function(){
           'lingua': risultati[i].original_language,
           'voto': '<span class="">' + genera_stelle(stelline) + '</span>',
           'indice': risultati[i].original_language,
+          'nome_serie': risultati[i].name,
+          'nome_serie_originale': risultati[i].original_name,
         };
 
         var html_finale = template_function(variabile_hldbar);
