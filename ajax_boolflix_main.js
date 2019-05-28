@@ -45,7 +45,18 @@ $(document).ready(function(){
         //console.log(converto);
         var stelline = Math.round(converto/2);
         //array_stelline.push(stelline);
-        console.log(stelline);
+        //console.log(stelline);
+
+        //per ogni scheda film vedo se lingua corrisponde alla ricerca
+        // $('.tipo_lingua').each(function() {
+        //   //recupero la lingua corrente nell'each
+        //   //var lin = $(this).text();
+        //   console.log(lin);
+        //   if ( lin === 'en') {
+        //     $(this).addClass('giallo');
+        //   }
+        //fine each
+        //});
 
 
         var variabile_hldbar = {
@@ -53,7 +64,12 @@ $(document).ready(function(){
           'titolo_originale': risultati[i].original_title,
           'lingua': risultati[i].original_language,
           'voto': '<span class="">' + genera_stelle(stelline) + '</span>',
+          'indice': risultati[i].original_language,
         };
+
+        var quelli_con_indice = $('[data-indice="en"]');
+        quelli_con_indice.addClass('giallo');
+
         var html_finale = template_function(variabile_hldbar);
         // appendo questo var all id che è nell'html
         $('.contenitore_schede_film').append(html_finale);
