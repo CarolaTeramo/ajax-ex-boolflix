@@ -4,6 +4,10 @@ $(document).ready(function(){
   var template_html = $('#entry-template').html();
   var template_function = Handlebars.compile(template_html);
 
+  var template_html_due = $('#template_due').html();
+  var template_function_due = Handlebars.compile(template_html_due);
+
+
   var chiave = '168d2053ad0197f7745e3f3f0a787812';
   //funzione per chiamata ajax
   function chiamata_ajax(film_scelto){
@@ -29,23 +33,41 @@ $(document).ready(function(){
 
     function output(info){
       // info= generica variabile a cui sopra do valore dato
-      console.log(info);
+      //console.log(info);
       var risultati = info.results;
-      console.log(risultati);
-      // Risultati è un array di oggetti quindi faccio un ciclo
+      //console.log(risultati);
+      //var array_stelline = [];
+      // Risultati è un array di oggetti quindi faccio un ciclo (CICLO RISULTATI CHIAMATA)
       for (var i = 0; i < risultati.length; i++) {
+
+        // trasformo il voto in stellina e arrotondo numero
+        var converto = risultati[i].vote_average;
+        //console.log(converto);
+        var stelline = Math.round(converto/2);
+        //array_stelline.push(stelline);
+        console.log(stelline);
+
 
         var variabile_hldbar = {
           'titolo': risultati[i].title,
           'titolo_originale': risultati[i].original_title,
           'lingua': risultati[i].original_language,
-          'voto': risultati[i].vote_average,
+          'voto': '<span class="">' + genera_stelle(stelline) + '</span>',
         };
         var html_finale = template_function(variabile_hldbar);
         // appendo questo var all id che è nell'html
         $('.contenitore_schede_film').append(html_finale);
 
-      //fine ciclo
+      //fine ciclo for i
+      }
+
+      //genero numero stelline pari al voto
+      function genera_stelle(x){
+        var st = '';
+        for (var j = 0; j < x; j++) {
+          st += '<i class="far fa-star giallo"></i>';
+        }
+        return st
       }
 
     //fine funz ajax output

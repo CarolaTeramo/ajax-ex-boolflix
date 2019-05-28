@@ -50,13 +50,23 @@
         </div>
 
         <div class="voto_film">
-          <h3>Voto : <span>{{ voto }}</span></h3>
+          <h3>Voto : <span>{{{ voto }}}</span>
+          </h3>
         </div>
 
       </div>
     </script>
 
+    <script id="template_due" type="text/x-handlebars-template">
+      <span data-indice="{{attributo}}"><i class="far fa-star"></i></span>
+    </script>
 
+
+    <!-- <span class="stella" data-indice="1" data-indice="2" data-indice="3" data-indice="4" data-indice="5">c</span>
+    <span class="stella" data-indice="2" data-indice="3" data-indice="4" data-indice="5">c</span>
+    <span class="stella" data-indice="3" data-indice="4" data-indice="5" >c</span>
+    <span class="stella" data-indice="4" data-indice="5">c</span>
+    <span class="stella" data-indice="5">c</span> -->
 
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
