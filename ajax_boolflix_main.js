@@ -4,10 +4,6 @@ $(document).ready(function(){
   var template_html = $('#entry-template').html();
   var template_function = Handlebars.compile(template_html);
 
-  var template_html_due = $('#template_due').html();
-  var template_function_due = Handlebars.compile(template_html_due);
-
-
   var chiave = '168d2053ad0197f7745e3f3f0a787812';
   //funzione per chiamata ajax
   function chiamata_ajax(film_scelto){
@@ -25,6 +21,7 @@ $(document).ready(function(){
       'success': function(dato){
 
         output (dato);
+        console.log(dato);
       },
       'error': function(){
         alert('no')
@@ -38,7 +35,7 @@ $(document).ready(function(){
       'data' : dato_ajax,
       'success': function(dato_chiamata_due){
         output (dato_chiamata_due);
-        console.log(dato_chiamata_due);
+        //console.log(dato_chiamata_due);
 
       },
       'error': function(){
@@ -61,7 +58,8 @@ $(document).ready(function(){
         var stelline = Math.round(converto/2);
         //array_stelline.push(stelline);
         //console.log(stelline);
-
+        var url_img = 'http://image.tmdb.org/t/p/w154'+ risultati[i].poster_path;
+        console.log(url_img);
 
         var variabile_hldbar = {
           'titolo': risultati[i].title,
@@ -71,6 +69,7 @@ $(document).ready(function(){
           'indice': risultati[i].original_language,
           'nome_serie': risultati[i].name,
           'nome_serie_originale': risultati[i].original_name,
+          'copertina':url_img,
         };
 
         var html_finale = template_function(variabile_hldbar);
@@ -101,7 +100,7 @@ $(document).ready(function(){
       function genera_stelle(x){
         var st = '';
         for (var j = 0; j < x; j++) {
-          st += '<i class="far fa-star giallo"></i>';
+          st += '<i class="fas fa-star giallo"></i>';
         }
         return st
       }

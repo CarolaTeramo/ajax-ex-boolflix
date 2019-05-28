@@ -1,5 +1,6 @@
 body{
   height: 100vh;
+  background-color: grey;
 }
 .container{
   display: flex;
@@ -8,32 +9,72 @@ body{
   flex-direction: column;
   height: auto;
   margin: 0 auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding-top: 20px;
+  width: 100vw;
+  background-color: black;
 }
 .ricerca{
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  border: 1px solid red;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+  margin-bottom: 20px;
+}
+.boolflix{
+  color: red;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 20px;
+}
+input{
+  border-radius: 5px;
+  height: 30px;
+  width: 200px;
+  margin-right: 20px;
+}
+button{
+  border-radius: 5px;
+  height: 30px;
+
 }
 .film_visualizzati{
-  width: 80%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  border: 1px solid green;
-  background-color: lightblue;
+  flex-direction: row;
+  /* border: 1px solid green; */
+  background-color: grey;
+}
+.contenitore_schede_film{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
 }
 #scheda_film{
-  background-color: white;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 20px;
+  width: 500px;
 }
 .giallo{
   color: yellow;
 }
-img{
+.tipo_lingua img{
   width: 30px;
   height: 30px;
+}
+h3{
+  font-size: 15px;
+  color: white;
+}
+.dati_film{
+  margin-right: 10px;
 }

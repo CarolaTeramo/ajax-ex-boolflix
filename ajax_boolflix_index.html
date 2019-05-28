@@ -19,8 +19,14 @@
 
     <div class="container">
       <div class="ricerca">
-        <input class="input_sx" type="text" name="" value="" placeholder="Cerca il film">
-        <button class="bt_dx"type="button" name="button">Cerca</button>
+        <div class="boolflix">
+          boolflix
+        </div>
+
+        <div class="f_ricerca">
+          <input class="input_sx" type="text" name="" value="" placeholder="Cerca il film">
+          <button class="bt_dx"type="button" name="button">Cerca</button>
+        </div>
       </div>
       <span></span>
 
@@ -37,28 +43,31 @@
 
       <div id="scheda_film">
 
-        <div class="titolo_film">
-          <h3>Titolo : <span> {{ titolo }} {{nome_serie}}</span></h3>
+        <div class="dati_film">
+          <div class="titolo_film">
+            <h3>Titolo : <span> {{ titolo }} {{nome_serie}}</span></h3>
+          </div>
+
+          <div class="titolo_orig_film">
+            <h3>Titolo originale : <span>{{ titolo_originale }}{{nome_serie_originale}}</span></h3>
+          </div>
+
+          <div class="lingua_film">
+            <h3>Lingua : <span class="tipo_lingua" data-indice="{{indice}}">{{ lingua }}</span></h3>
+          </div>
+
+          <div class="voto_film">
+            <h3 >Voto : <span >{{{ voto }}}</span>
+            </h3>
+          </div>
         </div>
 
-        <div class="titolo_orig_film">
-          <h3>Titolo originale : <span>{{ titolo_originale }}{{nome_serie_originale}}</span></h3>
+        <div class="immagine">
+          <img src="{{copertina}}" alt="">
         </div>
 
-        <div class="lingua_film">
-          <h3>Lingua : <span class="tipo_lingua" data-indice="{{indice}}">{{ lingua }}</span></h3>
-        </div>
-
-        <div class="voto_film">
-          <h3 >Voto : <span >{{{ voto }}}</span>
-          </h3>
-        </div>
 
       </div>
-    </script>
-
-    <script id="template_due" type="text/x-handlebars-template">
-      <span ><i class="far fa-star"></i></span>
     </script>
 
 
