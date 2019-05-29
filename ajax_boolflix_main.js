@@ -58,7 +58,7 @@ $(document).ready(function(){
         var stelline = Math.round(converto/2);
         //array_stelline.push(stelline);
         //console.log(stelline);//
-        var url_img = 'http://image.tmdb.org/t/p/w154'+ risultati[i].poster_path;
+        var url_img = 'http://image.tmdb.org/t/p/w342'+ risultati[i].poster_path;
         console.log(url_img);
 
         var variabile_hldbar = {
@@ -131,7 +131,12 @@ $(document).ready(function(){
   });
 
   $(document).on('mouseenter', '.immagine',function(){
+    $(this).hide();
     $(this).siblings('.dati_film').addClass('attiva');
+  });
+  $(document).on('mouseleave', '.dati_film',function(){
+    $(this).removeClass('attiva');
+    $(this).siblings('.immagine').show();
   });
 
   function invio_input() {
