@@ -55,7 +55,7 @@ button{
   flex-wrap: wrap;
 
 }
-#scheda_film{
+.scheda_film{
   background-color: black;
   display: flex;
   flex-direction: row;
@@ -77,4 +77,8 @@ h3{
 }
 .dati_film{
   margin-right: 10px;
+  display: none;
+}
+.attiva{
+  display: block;
 }

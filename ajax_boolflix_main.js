@@ -57,7 +57,7 @@ $(document).ready(function(){
         //console.log(converto);
         var stelline = Math.round(converto/2);
         //array_stelline.push(stelline);
-        //console.log(stelline);
+        //console.log(stelline);//
         var url_img = 'http://image.tmdb.org/t/p/w154'+ risultati[i].poster_path;
         console.log(url_img);
 
@@ -65,7 +65,7 @@ $(document).ready(function(){
           'titolo': risultati[i].title,
           'titolo_originale': risultati[i].original_title,
           'lingua': risultati[i].original_language,
-          'voto': '<span class="">' + genera_stelle(stelline) + '</span>',
+          'voto': '<span class="">' + genera_stelle(stelline) + genera_stelle_vuote(5 - stelline) + '</span>',
           'indice': risultati[i].original_language,
           'nome_serie': risultati[i].name,
           'nome_serie_originale': risultati[i].original_name,
@@ -75,11 +75,6 @@ $(document).ready(function(){
         var html_finale = template_function(variabile_hldbar);
         // appendo questo var all id che è nell'html
         $('.contenitore_schede_film').append(html_finale);
-
-        var quelli_con_indice = $('[data-indice="en"]');
-        quelli_con_indice.html('<img src="icon_en.png" alt="">');
-        var quelli_con_indice = $('[data-indice="it"]');
-        quelli_con_indice.html('<img src="icon_ita.png" alt="">');
 
         //OPPURE
         //per ogni scheda film vedo se lingua corrisponde alla ricerca
@@ -96,11 +91,25 @@ $(document).ready(function(){
       //fine ciclo for i
       }
 
+      var idioma = ['en', 'it', 'fr', 'es', 'de'];
+      for (var i = 0; i < idioma.length; i++) {
+        var quelli_con_indice = $('[data-indice="'+ idioma[i] +'"]');
+        console.log(quelli_con_indice);
+        quelli_con_indice.html('<img src="icon_'+ idioma[i] +'.png" alt="">');
+      }
+
       //genero numero stelline pari al voto
       function genera_stelle(x){
         var st = '';
         for (var j = 0; j < x; j++) {
           st += '<i class="fas fa-star giallo"></i>';
+        }
+        return st
+      }
+      function genera_stelle_vuote(x){
+        var st = '';
+        for (var j = 0; j < x; j++) {
+          st += '<i class="far fa-star giallo"></i>';
         }
         return st
       }
@@ -119,6 +128,10 @@ $(document).ready(function(){
     if(event.which == 13) {
       invio_input();
     }
+  });
+
+  $(document).on('mouseenter', '.immagine',function(){
+    $(this).siblings('.dati_film').addClass('attiva');
   });
 
   function invio_input() {
