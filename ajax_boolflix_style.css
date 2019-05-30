@@ -37,7 +37,9 @@ input{
 button{
   border-radius: 5px;
   height: 30px;
-
+  background-color: red;
+  border: black;
+  color: black;
 }
 .film_visualizzati{
   width: 90%;
@@ -53,16 +55,17 @@ button{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
+  align-items: center;
+  justify-content: center;
 }
 .scheda_film{
   background-color: black;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 20px;
-  padding: 20px;
-  width: 500px;
+  align-items: center;
+  justify-content: center;
+  margin: 40px;
+  padding: 29px;
+  width: 400px;
 }
 .giallo{
   color: yellow;
@@ -72,13 +75,24 @@ button{
   height: 30px;
 }
 h3{
-  font-size: 15px;
+  font-size: 20px;
   color: white;
+  text-align: center;
 }
 .dati_film{
   margin-right: 10px;
+  width: 400px;
+  height: 513px;
   display: none;
 }
 .attiva{
   display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.immagine img{
+  width: 342px;
+  height: 513px;
 }

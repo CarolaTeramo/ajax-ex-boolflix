@@ -7,7 +7,7 @@ $(document).ready(function(){
   var chiave = '168d2053ad0197f7745e3f3f0a787812';
   //funzione per chiamata ajax
   function chiamata_ajax(film_scelto){
-
+    //dato_ajax = parametri che si aggiungono a url
     var dato_ajax = {
       'api_key': chiave,
       'query': film_scelto,
@@ -30,7 +30,6 @@ $(document).ready(function(){
 
     $.ajax({
       'url': 'https://api.themoviedb.org/3/search/tv',
-      //'url': 'https://api.themoviedb.org/3/search/movie?api_key=168d2053ad0197f7745e3f3f0a787812&query=batman',
       'method': 'GET',
       'data' : dato_ajax,
       'success': function(dato_chiamata_due){
@@ -43,12 +42,14 @@ $(document).ready(function(){
       }
     });
 
+
     function output(info){
       // info= generica variabile a cui sopra do valore dato
       //console.log(info);
       var risultati = info.results;
       //console.log(risultati);
       //var array_stelline = [];
+
       // Risultati è un array di oggetti quindi faccio un ciclo (CICLO RISULTATI CHIAMATA)
       for (var i = 0; i < risultati.length; i++) {
 
@@ -58,8 +59,42 @@ $(document).ready(function(){
         var stelline = Math.round(converto/2);
         //array_stelline.push(stelline);
         //console.log(stelline);//
+
+
         var url_img = 'http://image.tmdb.org/t/p/w342'+ risultati[i].poster_path;
-        console.log(url_img);
+        //console.log(url_img);
+        if (risultati[i].poster_path == null) {
+          var url_img = 'img_not.png';
+          console.log(url_img);
+        }
+
+        //altra chiamata_ajax da fare dentro output perchè mi serve
+        //un dato id che prendo dalla prima chiamata
+        // var id = risultati[i].id;
+        // console.log(id);
+        //
+        // var dato_ajax_cast = {
+        //   'api_key': chiave,
+        //   'query': film_scelto,
+        //   'movie_id': 2287,
+        // }
+        //
+        // $.ajax({
+        //   'url': 'https://api.themoviedb.org/3/movie/{movie_id}/credits',
+        //   //'url': 'https://api.themoviedb.org/3/search/movie?api_key=168d2053ad0197f7745e3f3f0a787812&query=batman&movie_id=2287',
+        //   'method': 'GET',
+        //   'data' : dato_ajax_cast,
+        //   'success': function(dato_chiamata_cast){
+        //     output (dato_chiamata_cast);
+        //     console.log(dato_chiamata_cast);
+        //
+        //   },
+        //   'error': function(){
+        //     alert('no')
+        //   }
+        // });
+
+
 
         var variabile_hldbar = {
           'titolo': risultati[i].title,
@@ -88,13 +123,22 @@ $(document).ready(function(){
         //fine each
         //});
 
+
+
+
+
+
+
+
       //fine ciclo for i
       }
 
+      // metto indice = a un array e al div
+      //con questo indice metto img
       var idioma = ['en', 'it', 'fr', 'es', 'de'];
       for (var i = 0; i < idioma.length; i++) {
         var quelli_con_indice = $('[data-indice="'+ idioma[i] +'"]');
-        console.log(quelli_con_indice);
+        //console.log(quelli_con_indice);
         quelli_con_indice.html('<img src="icon_'+ idioma[i] +'.png" alt="">');
       }
 
@@ -114,10 +158,14 @@ $(document).ready(function(){
         return st
       }
 
+
+
+
     //fine funz ajax output
     }
   //fine funzione chiamata_ajax
   }
+
 
   $('.bt_dx').click(function(){
     invio_input();
@@ -131,12 +179,12 @@ $(document).ready(function(){
   });
 
   $(document).on('mouseenter', '.immagine',function(){
-    $(this).hide();
+    $(this).toggle();
     $(this).siblings('.dati_film').addClass('attiva');
   });
   $(document).on('mouseleave', '.dati_film',function(){
     $(this).removeClass('attiva');
-    $(this).siblings('.immagine').show();
+    $(this).siblings('.immagine').toggle();
   });
 
   function invio_input() {
